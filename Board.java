@@ -14,8 +14,12 @@ public class Board {
     }
 
     // row/column 1-9 helper.
-    private int row(int pos) { return (pos - 1) / 3; }
-    private int col(int pos) { return (pos - 1) % 3; }
+    private int row(int pos) {
+        return (pos - 1) / 3;
+    }
+    private int col(int pos) {
+        return (pos - 1) % 3;
+    }
 
     public boolean isCellFree(int pos) {
         int r = row(pos), c = col(pos);
@@ -40,7 +44,7 @@ public class Board {
     private static final int[][] LINES = {
             {1, 2, 3}, {4, 5, 6}, {7, 8, 9}, //row.
             {1, 4, 7}, {2, 5, 8}, {3, 6, 9}, //cols.
-            {1, 5, 9}, {3, 5, 7}
+            {1, 5, 9}, {3, 5, 7} //diagonal.
     };
 
     public boolean hasWinner() {
