@@ -12,13 +12,14 @@ public class Game {
             if (!askYesNo("Play again? (y/n): "))
                 break;
         }
-        System.out.printf("Final score - %s: %d, %s: %d%n", p1.getName(), score1, p2.getName(), score2);
+        System.out.println("Final score - " + p1.getName() + ": " + score1 + ", " + p2.getName() + ": " + score2);
         System.out.println("Thanks for playing!");
     }
 
     private void setupPlayers() {
         System.out.print("Player 1 name (X): ");
         p1 = new Player(in.nextLine().trim(), 'X');
+
         System.out.print("Player 2 name (O): ");
         p2 = new Player(in.nextLine().trim(), 'O');
     }
@@ -28,13 +29,13 @@ public class Game {
         current = p1;
         while (true) {
             board.printBoard();
-            System.out.printf("%s (%c), choose a position 1-9: ", current.getName(), current.getMark());
+            System.out.print(current.getName() + " (" + current.getMark() + "), choose a position 1-9: ");
             int move = readMove();
             board.placeMark(move, current.getMark());
 
             if (board.hasWinner()) {
                 board.printBoard();
-                System.out.printf("%s wins!%n", current.getName());
+                System.out.println(current.getName() + " wins!");
                 updateScore();
                 printScore();
                 return;
@@ -77,7 +78,7 @@ public class Game {
         else score2++;
     }
     private void printScore() {
-        System.out.printf("Score - %s: %d, %s: %d%n", p1.getName(), score1, p2.getName(), score2);
+        System.out.println("Score - " + p1.getName() + ": " + score1 + ", " + p2.getName() + ": " + score2);
     }
 
     private boolean askYesNo(String prompt) {
